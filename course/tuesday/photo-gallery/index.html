@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Photo gallery</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        img {
+            margin: 10px;
+            max-width: 200px;
+            height: auto;
+        }
+
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        ul li,
+        ul a {
+            display: inline-block;
+        }
+
+        ul a {
+            padding: 10px;
+            background: #ccc;
+            color: #fff;
+        }
+
+        a[data-selected="yes"] {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Photo Gallery</h1>
+
+    <ul id="category">
+        <li><a href="#" data-selected="yes" data-class="*">All</a></li>
+        <li><a href="#" data-selected="no" data-class="flower">Flowers</a></li>
+        <li><a href="#" data-selected="no" data-class="animal">Animals</a></li>
+        <li><a href="#" data-selected="no" data-class="people">People</a></li>
+    </ul>
+
+    <img src="img/flowers/1.jpeg" class="flower">
+    <img src="img/flowers/2.jpeg" class="flower">
+    <img src="img/flowers/3.jpeg" class="flower">
+
+    <img src="img/animals/1.jpeg" class="animal">
+    <img src="img/animals/2.jpeg" class="animal">
+    <img src="img/animals/3.jpg" class="animal">
+    <img src="img/animals/4.jpeg" class="animal">
+
+    <img src="img/people/1.jpeg" class="people">
+    <img src="img/people/2.jpeg" class="people">
+    <img src="img/people/3.jpeg" class="people">
+    <img src="img/people/4.jpeg" class="people">
+
+    <script>
+        var nav = document.getElementById("category");
+        // var images = document.querySelectorAll("img"); // make this an array to get lots of options. Currently this renders as a NodeList. Next line ...
+        var images = Array.from(document.querySelectorAll("img"));
+
+        nav.addEventListener("click", function (e) {
+            e.preventDefault();
+
+            if (e.target.hasAttribute("data-class")) {
+
+                nav.querySelectorAll("a").forEach(function (a) {
+
+                    a.setAttribute("data-selected", "no");
+                })
+
+                e.target.setAttribute("data-selected", "yes");
+                var filter = e.target.getAttribute("data-class");
+                filterImages(filter);
+
+            }
+
+        });
+
+        function filterImages(filter) {
+
+            if (filter === "*") {
+                images.forEach(function (image) {
+                    image.style.display = "inline-block";
+                });
+            } else {
+
+                images.forEach(function (image) {
+                    if (image.classList.contains(filter)) {
+                        // show image
+                        image.style.display = "inline-block";
+                    } else {
+                        image.style.display = "none";
+                        // hide image
+                    }
+                });
+            }
+        }
+    </script>
+
+</body>
+
+</html>

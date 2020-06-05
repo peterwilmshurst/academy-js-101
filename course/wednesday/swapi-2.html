@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <ul id="root">
+
+
+
+    </ul>
+
+    <script>
+        // https://swapi.co/api/people // Endpoint from the API. GET request to get data. POST request to add data to the API.
+
+
+        var characterList = document.querySelector('#root');
+        var url = "https://swapi.co/api/people";
+        var request = new XMLHttpRequest(); // initiate
+
+        request.open("GET", url);
+        request.send();
+
+        // view this in the network tab. Status code 200 means everything went well. The Response tab shows us the data (JSON).
+
+
+        // attach an EventListener here to determine whether the data is ready or not. Test with console.log
+
+        // request.addEventListener("readystatechange", () => {
+
+        //     if(request.readyState === 4 && request.status === 200) {
+
+        //         console.log ("Success");
+
+        //     } else if (request.readyState === 4) {
+
+        //         console.error("Something went wrong.");
+
+        //     }
+
+        // });
+
+
+
+        request.addEventListener("readystatechange", () => {
+
+            if (request.readyState === 4 && request.status === 200) {
+
+                var data = JSON.parse(request.responseText); // assign the data to a variable called data and parse to a javascript object
+
+                var results = data.results;
+
+                //callback function
+
+                displayCharacters(results);
+
+            } else if (request.readyState === 4) {
+
+                console.error("Something went wrong.");
+
+            }
+
+        });
+
+
+        // // peters attempt 
+        // function displayCharacters(characters) {
+
+        // characters.forEach(printCharacter);
+
+        // console.log(characters);
+        // }
+
+        // function printCharacter(item, index) {
+
+        // characterList.innerHTML += `<li>${item.name}</li>`;
+        // }
+
+        // geddy (arrow function) (cross browser)
+        function displayCharacters(characters) {
+            console.log(characters);
+            characters.forEach(item => {
+                root.innerHTML += `<li>${item.mass}</li>`;
+            });
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

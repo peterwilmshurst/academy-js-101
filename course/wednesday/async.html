@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Async</title>
+</head>
+
+<body>
+    <div id="root">
+
+
+    </div>
+
+
+    <script>
+        var url = "http://api.icndb.com/jokes/random";
+        var characterList = document.querySelector('#root');
+
+// try / catch //
+        // try {} // try this code block and if all is okay. if not then catch ...
+        // catch(error) {
+        //     console.log(error);
+        // }
+
+    async function getRandomJoke() { // add async before the function to make it an asynchronous function.
+           
+        try {
+            var data = await fetch(url); // the await key word acts like a '.then'. It will wait here until the promise is resolved.
+            var response = await data.json(); // to pull in the JSON once the data has been resolved
+            var joke = response.value.joke; // '.value.joke' to pull the text in this 'joke' key and assign to the joke variable
+            root.innerHTML = joke; // print the joke to the element with an id of 'root'.
+            }
+
+            catch(error) {
+            console.log("Something went wrong!", error);
+            }
+        }
+
+            getRandomJoke();
+   
+    </script>
+</body>
+
+</html>

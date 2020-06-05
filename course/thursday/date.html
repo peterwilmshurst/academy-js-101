@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Date</title>
+</head>
+
+<body>
+
+
+    <div id="clock"></div>
+
+
+    <script>
+        const clock = document.getElementById("clock");
+
+
+        function updateClock() {
+            const today = new Date();
+            const hours = today.getHours();
+            const min = today.getMinutes();
+            const sec = today.getSeconds();
+
+            clock.textContent =
+                `${(hours < 10) ? "0" + hours : hours}:${(min < 10) ? "0" + min : min}:${(sec < 10) ? "0" + sec : sec}`; // ternary operator
+        }
+
+        setInterval(updateClock, 1000);
+
+// var birth = new Date('11 May 1984'); // will print out in date format useful if you want to quickly know what day a certain year/month is
+
+const person = {
+    birthday: new Date ("11 May 1984"),
+    getAge: function() {
+
+        const today = new Date;
+        const diff = today.getTime() - this.birthday.getTime();
+        const years = new Date(diff).getFullYear() - 1970;
+        return years;
+    }
+}
+
+// Any Capital letter in JS depicts objects. E.g. Math
+
+    </script>
+</body>
+
+</html>

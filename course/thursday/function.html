@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Function</title>
+</head>
+
+<body>
+
+    <input id="name" type="text">
+
+    <input id="result" type="text">
+
+    <button>
+        How many letters?
+    </button>
+
+    <script>
+        var a = document.querySelector("#name");
+        var b = document.querySelector('button');
+        var c = document.querySelector('#result');
+
+        b.addEventListener('click', function () {
+            console.log(a.value.length);
+            c.value=a.value.length;
+        });
+    </script>
+
+</body>
+
+</html>

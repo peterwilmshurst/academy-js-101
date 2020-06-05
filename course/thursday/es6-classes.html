@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Objects ES 6 Classes</title>
+</head>
+<body>
+
+    <p>Create an object using Classes (ES6)</p>
+
+
+    <script>
+
+        class Person { // constructor class
+        // constructor method
+            constructor(name, age) { // parameters - name and age
+                this.name = name; // properties
+                this.age = age;
+                this.a = 0;
+        }
+
+        greetings() { // outside of the constructor, but within the class to add to the prototype.
+        return `Hello my name is ${this.name}`;
+            }
+
+            increment() {
+                this.a++;
+            }
+
+            static addNums(a,b) { // static method. You can use this directly on the class. Like 'Math' for example. Can create codeblocks for different functions you may need for Person.
+                return a + b;
+            }
+        }
+
+        class Customer extends Person {
+            constructor(name, age, email) {
+                super(name, age); // inherits the properties listed from the object you are extending. In this case name and age. Also inherits the greetings function.
+                this.email = email; // unique to the customer class
+            }
+
+            greetings() { // outside of the constructor, but within the class to add to the prototype.
+        return `Hello my name is ${this.name} and my emails is ${this.email}.`;
+            }
+
+            changeEmail(newEmail) { // pass the new email to update the existing one
+            this.email = newEmail;
+            }
+
+        }
+
+        // create a new person
+        const john = new Person("John", 35);
+
+        // create a new customer
+        const client1 = new Customer("Matt", 40, "example@gmail.com");
+
+    </script>
+    
+</body>
+</html>

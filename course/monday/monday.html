@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demo Function</title>
+</head>
+
+<body style="height: 100vh;">
+
+    <input id="num1" type="number">
+
+    <input id="num2" type="number">
+
+    <button id="btnTotal">Sum</button>
+
+    <button id="changeColour">Change Colour!</button>
+
+<script>
+    // add two numbers together and display in the console log
+
+    // global variables
+    var a = document.querySelector('#num1');
+    var b = document.querySelector('#num2');
+    var c = document.querySelector('#btnTotal');
+
+    c.addEventListener('click', function () { // use an inline function
+        
+        // local variables
+        var d = parseInt(a.value);
+        var e = parseInt(b.value);
+
+        console.log(d + e);
+
+    });
+
+    // change body bg colour property
+
+    // global variables
+    var f = document.querySelector('#changeColour');
+
+    f.addEventListener("click", randomColorEvent); // use the randomColorEvent function
+
+    function randomColorEvent() {
+        // local variables 
+        var red = Math.round(Math.random() * 255);
+        var blue = Math.round(Math.random() * 255);
+        var green = Math.round(Math.random() * 255);
+        document.body.style.backgroundColor = `rgb(${red},${green},${blue})`;
+    }
+</script>
+
+</body>
+
+</html>

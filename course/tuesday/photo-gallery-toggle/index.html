@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Photo gallery</title>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        img {
+            margin: 10px;
+            max-width: 200px;
+            height: auto;
+        }
+
+        ul {
+            padding: 0;
+            list-style: none;
+        }
+
+        ul li,
+        ul a {
+            display: inline-block;
+        }
+
+        ul a {
+            padding: 10px;
+            background: #ccc;
+            color: #fff;
+        }
+
+        a[data-selected="yes"] {
+            background: #333;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Photo Gallery</h1>
+
+    <ul id="category">
+        <li><a href="#" data-selected="yes" data-class="flower">Flowers</a></li>
+        <li><a href="#" data-selected="yes" data-class="animal">Animals</a></li>
+        <li><a href="#" data-selected="yes" data-class="people">People</a></li>
+    </ul>
+
+    <img src="img/flowers/1.jpeg" class="flower">
+    <img src="img/flowers/2.jpeg" class="flower">
+    <img src="img/flowers/3.jpeg" class="flower">
+
+    <img src="img/animals/1.jpeg" class="animal">
+    <img src="img/animals/2.jpeg" class="animal">
+    <img src="img/animals/3.jpg" class="animal">
+    <img src="img/animals/4.jpeg" class="animal">
+
+    <img src="img/people/1.jpeg" class="people">
+    <img src="img/people/2.jpeg" class="people">
+    <img src="img/people/3.jpeg" class="people">
+    <img src="img/people/4.jpeg" class="people">
+
+    <script>
+        var choices = document.querySelectorAll("#category a");
+        var images = document.querySelectorAll("img");
+        var selected = []; // variables declared here are accessible via the console, so even though this variable can be set within the function as a private function, for debugging it is good to include here
+
+        choices.forEach(function (choice) {
+            choice.addEventListener("click", getSelection);
+
+        });
+
+        function getSelection(e) {
+
+            if (e.target.getAttribute("data-selected") === "yes") {
+
+                // set to no
+
+                e.target.setAttribute("data-selected", "no");
+
+            } else {
+
+                // set to yes
+
+                e.target.setAttribute("data-selected", "yes");
+            }
+
+            // console.log(e.target.getAttribute("data-class")); // test here, before the return statement!
+
+            var choice = e.target.getAttribute("data-class");
+
+
+            if (selected.includes(choice))
+
+            {
+                var index = selected.indexOf(choice);
+                selected.splice(index, 1);
+
+            } else {
+
+                selected.push(choice); // push that choice to the end of the array.
+
+            }
+
+            console.log(selected);
+
+            filterImages(selected);
+
+        }
+
+
+        function filterImages(selected) {
+
+            images.forEach(function (image) {
+                if (selected.includes(image.className)) {
+                    // show image
+                    image.style.display = "inline-block";
+                } else {
+                    image.style.display = "none";
+                    // hide image
+                }
+            });
+
+        }
+
+        function init() {
+
+            choices.forEach(function(choice){
+
+                selected.push(choice.getAttribute("data-class"));
+
+            });
+        }
+
+        init();
+
+
+    </script>
+
+</body>
+
+</html>

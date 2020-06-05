@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Loops</title>
+</head>
+<body>
+
+    <ul id="root">
+
+
+        
+    </ul>
+
+    </div>
+<script>
+
+var colors = [
+    {
+        color: "red",
+        value: "#f00"
+    },
+    {
+        color: "green",
+        value: "#0f0"
+    },
+    {
+        color: "blue",
+        value: "#00f"
+    },
+    {
+        color: "cyan",
+        value: "#0ff"
+    },
+    {
+        color: "magenta",
+        value: "#f0f"
+    },
+    {
+        color: "yellow",
+        value: "#ff0"
+    },
+    {
+        color: "black",
+        value: "#000"
+    }
+];
+
+// for loop - anywhere
+
+// for(var i=0; i<colors.length; i++) { // for loop, anything in the curly brackets will run 10 times
+// console.log(colors[i].color);
+// }
+
+// while loop
+
+var i = 0;
+while(i<colors.length) {
+    console.log(colors[i].color);
+
+    i++;
+}
+
+// do .. while loop 
+
+// do {
+
+// }
+
+// for each (items in an array) - only arrays
+
+// colors.forEach(printColor);
+
+// function printColor(item, index){
+//     console.log(item.color, index);
+// }
+
+// // print colours onto the page (old school)
+
+// var colorList = document.querySelector('#root');
+
+// colors.forEach(printColor);
+
+// function printColor(item, index){
+//     console.log(item.color, index);
+
+//     colorList.innerHTML += "<li>" + item.color + "</li>";
+// }
+
+// print colours onto the page (old school)
+
+var colorList = document.querySelector('#root');
+
+colors.forEach(printColor);
+
+function printColor(item, index){ // the index arguement can be omitted 
+    //console.log(item.color, index);
+
+    colorList.innerHTML += `<li style="color:${item.value};">${item.color}</li>`;
+}
+
+colorList.addEventListener("click", function(event){
+
+  //  if(event.target.hasAttribute("style") === true) { /// === true is the default, loose as we are relying on the stlye attribute above
+
+      if (event.target.tagName === "LI") { /// more robust. every <li> element needs to be capital letters
+
+        // toggler
+        if (event.target.classList.contains("big")) {
+            // make smaller
+            event.target.style.fontSize = "2em";
+            event.target.classList.remove("big");
+
+        } else {
+            // make bigger
+            event.target.style.fontSize = "4em";
+            event.target.classList.add("big");
+        }
+
+        //event.target.style.fontSize = "50px";
+        //event.target.remove();
+
+    }
+
+});
+
+</script>
+</body>
+</html>

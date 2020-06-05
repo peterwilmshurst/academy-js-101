@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Arrays</title>
+
+    <style>
+        p {
+            color: black;
+            font-weight: normal;
+            background-color: yellow;
+            padding: 1em;
+        }
+
+        span {
+            color: yellow;
+            font-weight: bold;
+            background-color: black;
+            padding: 1em;
+        }
+    </style>
+</head>
+
+
+<body>
+
+    <ul id="root">
+
+
+
+    </ul>
+
+</body>
+
+
+<script>
+    var quotes = [
+        `To follow the path:
+    look to the master,
+    follow the master,
+    walk with the master,
+    see through the master,
+    become the master. -- Modern zen Poem`,
+
+        `No problem should ever have to be solved twice. -- Eric S. Raymond, How to become a hacker`,
+
+        `A little learning is a dangerous thing. -- Alexander Pope`,
+
+        `The best way to learn to live with our limitations is to know them. --E. W. Dijkstra, The humble programmer`,
+
+        `XML wasn't designed to be edited by humans on a regular basis. -- Guido van Rossum`
+
+    ]
+
+    var quoteList = document.querySelector('#root');
+
+    // print quotes and split on '--' string
+
+    // quotes.forEach(printQuote);
+
+    // function printQuote(item) {
+
+    //     var text = item.split("--")[0];
+    //     var author = item.split("--")[1];
+
+    //     quoteList.innerHTML += `<li><p>${text}</p><span>${author}</span></li>`;
+    // };
+
+
+
+    // pure function 
+    function randomNumber(max) {
+        var randNum = Math.round(Math.random() * max);
+        return randNum;
+    }
+
+    function renderQuote() {
+
+   var index = randomNumber(quotes.length-1);
+   var item = quotes[index];
+
+        var text = item.split("--")[0];
+        var author = item.split("--")[1];
+
+        quoteList.innerHTML = `<li><p>${text}</p><span>${author}</span></li>`;
+
+    }
+
+    renderQuote()
+    setInterval(renderQuote, 5000);
+
+</script>
+
+</html>

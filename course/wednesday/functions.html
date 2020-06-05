@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Functions</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        // Function declaration
+        addNumbers(4, 6); // can call the function before it is declared thanks to JIT and Hoisting.
+
+        function addNumbers(a, b) {
+            return a + b;
+        }
+
+
+        // Function expression using Arrow Function.
+        const sum = (a, b) => a + b;
+
+        sum(4, 5); // has to be called after it has been declared.
+
+
+        //Method
+        const calculator = {
+            addNumbers: function (a, b) {
+                return a + b;
+            }
+        }
+
+        calculator.addNumbers(2, 5);
+
+
+        // Callback function
+        function getItems(callback) {
+            // do something
+            callback();
+        }
+
+        getItems(function () {
+            console.log("callback function fires");
+        });
+
+
+        // Example of a function
+        function generateString(string, callback) {
+
+            if (string.includes("J")) {
+
+                string = string + " you have J";
+            }
+            callback(string);
+        }
+
+
+        generateString("John", function (generatedString) {
+            console.log("Callback", generatedString);
+        });
+
+
+        // // Closure
+        // function counter(callback) {
+
+        //     var count = 0;
+
+        //     function increment() {
+        //         count++;
+        //         console.log(count);
+        //     }
+        //     increment();
+        // }
+
+
+
+    </script>
+</body>
+
+</html>

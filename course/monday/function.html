@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demo Function</title>
+</head>
+
+<body>
+
+    <input id="num1" type="number">
+
+    <input id="num2" type="number">
+
+    <button>Sum</button>
+
+
+    <script>
+        // global variables
+        var a = document.getElementById('num1');
+        var b = document.getElementById('num2');
+        var button = document.querySelector('button');
+
+        button.addEventListener('click', function () {
+            // local variables
+            var val1 = parseInt(a.value);
+            var val2 = parseInt(b.value);
+
+            console.log(val1 + val2);
+
+        });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        
+        console.log(1);
+        console.log(2);
+
+        setTimeout(function(){
+
+console.log("setTimeout"); // test the function in the console. setTimeout is a function from the WebAPI and runs Asynchronously. I.e. 1,2,3,4 will be printed and not stop at 2 as the webAPI is dealing with this request.
+
+        }, 5000);
+
+        console.log(3);
+        console.log(4);
+
+
+
+        function addNumbers (a,b) {
+            return a + b;
+        }
+
+        addNumbers(2,4); //6
+
+
+        // arrow functions, less syntax (E6). The example below is annonymous.
+
+        (a,something) => {
+            var something = 56;
+            return a + something;
+        }
+
+        // The example below is assigned to the addNumbers variable.
+
+        var addNumbers = (a,b) => {
+            var something = 56;
+            return a + b;
+        }
+
+        // Can also be written like this ... (less typing).
+
+        var addNumbers = (a,b) => a + b;
+
+        // IIFE using traditional syntax. Runs immediately.
+
+        (function(num) {console.log("IIFE returns " + num);})(2)
+
+        // IIFE using arrow functions. Runs immediately.
+
+        (num => console.log("IIFE returns " + num))(2);
+
+        // IIFE using arrow functions with multiple parameters. Runs immediately.
+
+        ((num, $) => console.log("IIFE returns " + num))(2, jQuery);
+
+
+        // change this function to be an arrow function
+
+        setTimeout(function(){
+
+        console.log("setTimeout"); 
+        }, 5000);
+
+        // can be written like this ...
+
+        setTimeout(() => console.log("setTimeout"), 5000);
+
+        </script>
+    
+</body>
+</html>

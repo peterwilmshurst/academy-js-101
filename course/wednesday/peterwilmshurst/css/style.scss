@@ -1,0 +1,121 @@
+// add your custom styles here
+
+$brand-black: #2A263D;
+$brand-green: #39b54a;
+$white: #fff;
+
+body {
+    background-color: $brand-black;
+    overflow: hidden;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.wilmshurst {
+    height: 200px;
+    width: 200px;
+
+    .cursor {
+        fill: $brand-green;
+
+        &:hover {
+            cursor: pointer;
+            fill: $white;
+        }
+    }
+
+    .w {
+        fill: $white;
+
+        &:hover {
+            cursor: pointer;
+            fill: $brand-green;
+        }
+    }
+
+    .i {
+        fill: $white;
+
+        &:hover {
+            cursor: pointer;
+            fill: $brand-green;
+        }
+    }
+
+    .l {
+        fill: $white;
+
+        &:hover {
+            cursor: pointer;
+            fill: $brand-green;
+        }
+    }
+
+    .m {
+        fill: $white;
+
+        &:hover {
+            cursor: pointer;
+            fill: $brand-green;
+        }
+    }
+
+    .s {
+        fill: $white;
+
+        &:hover {
+            cursor: pointer;
+            fill: $brand-green;
+        }
+    }
+
+    .h {
+        fill: $white;
+
+        &:hover {
+            cursor: pointer;
+            fill: $brand-green;
+        }
+    }
+
+    .u {
+        fill: $white;
+
+        &:hover {
+            cursor: pointer;
+            fill: $brand-green;
+        }
+    }
+
+    .r {
+        fill: $white;
+
+        &:hover {
+            cursor: pointer;
+            fill: $brand-green;
+        }
+    }
+
+    .s {
+        fill: $white;
+
+        &:hover {
+            cursor: pointer;
+            fill: $brand-green;
+        }
+    }
+
+    .t {
+        fill: $white;
+
+        &:hover {
+            cursor: pointer;
+            fill: $brand-green;
+        }
+    }
+}

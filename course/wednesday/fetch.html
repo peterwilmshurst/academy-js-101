@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fetch</title>
+</head>
+<body>
+
+    <ul id="root">
+
+    </ul>
+
+<script>
+
+
+var url = "https://swapi.co/api/people";
+var characterList = document.querySelector('#root');
+
+
+    function getData() {
+        return new Promise((resolve, reject) => {
+            resolve("Success");
+            // reject("Something went wrong.");
+        });
+    }
+
+    var data = getData();
+
+    // data.then((data) => console.log(data)); // .then will do something when the promises resolve status is met.
+
+    // data.then((data) => console.log(data), (error) => console.log(
+    // error)); // two call backs available. The second will fire if the promise is rejected.
+
+    data
+        .then((data) => console.log(data))
+        .catch((error) => console.log(error)) // you can also use the catch block to fire when the promise is rejected.
+        .finally(()=> console.log("finally")); // finally will run no matter what. Whether it is rejected or resolved.
+
+
+// ------------------------------------------------- //
+
+        // // API call using fetch
+        // function getCharacters() {
+        // return fetch(url);
+        // }
+
+        // var dataTwo = getCharacters();
+
+        // dataTwo
+        // .then((data) => {
+
+        // var results = data.json();
+        // results.then(responseText => console.log(responseText));
+        // })
+        // .catch((error) => console.log(error))
+
+
+// can also be written like this (neater) //
+
+function getCharacters() {
+return fetch(url);
+}
+
+var dataThree = getCharacters();
+
+
+dataThree
+.then(data => data.json())
+.then(response => {    
+    console.log(response.results);
+    displayCharacters(response.results);
+})
+.catch(error => console.log(error));
+
+function displayCharacters(characters) {
+    console.log(characters);
+    characters.forEach(item => {
+            root.innerHTML += `<li>${item.name}</li>`;
+            });
+        }
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Objects</title>
+</head>
+
+<body>
+
+    <script>
+//         // Primitives, copied by value
+
+//         const a = 5;
+//         const b = a;
+
+//         console.log(b === a); //true
+
+//         let a = 5;
+//         const b = a;
+//         a = 10;
+
+//         console.log(b === a); //false
+
+
+//         // Complex, copied by reference 
+
+//         const c = [2, 3, 5];
+//         const d = c;
+//         c.push("hello");
+//         d.push(13);
+
+//         console.log(c === d); //true, as you are still pointing to the same array reference
+
+
+//         const obj = {
+//         name: "John",
+//         age:50,
+//         hobbies: ["fishing", "dancing"]
+//         }
+
+//         const paul = obj; // this is a reference to the obj varaiable. it is not a copy so updating the paul variable will still update the obj.
+
+
+//         // How to copy an object, not reference it: However this only copies the top layer. Only Primitive values. Not deep copy (e.g. Hobbies). If you amend the copied objects hobbies (complex) the original objects hobbies will also be updated.
+
+//         const paul = Object.assign({}, obj);
+
+//         // To create a deep copy you need to convert the object to a string and then parse it back to a javascript object like this:
+
+//         const peter = JSON.parse(JSON.stringify(obj)); // to return the string
+
+//         // To create a copy of an array
+
+//         Object.assign([], array);
+
+
+//         // ES6 Syntax
+
+//         const john = {
+//             name: "John",
+//             age: 56
+//         }
+
+//         const george = {
+//             name: "George",
+//             age: 56
+//         }
+
+//         const beatles = [john, george]; // Destructuring: Adding the john and george objects into an array called beatles.
+        
+        
+//         const array1 = [3, 4, 6];
+
+//         const array2 = [...array1]; // '...' Spread Operator. Gets the content of array1 and copies the values into an empty array. Does not create a deep copy
+
+
+// // you can also combine arrays like this:
+
+// const array0 = [1, 2, 3];
+// const array1 = [3, 4, 5];
+// const array2 = [...array1, ...array0];
+
+
+// const array3 = ["john", "ringo"];
+
+// //ES5
+// // const john = array3[0];
+// // const ringo = array3[1];
+
+// //ES6
+// const [john, ringo] = array3;
+
+
+// // we 
+// const obj1 = {
+//     prop1: 34,
+//     prop2: 49
+// }
+// const {prop1, prop2} = obj1 // create 2 variables called prop1 and prop2 and assign the value of keys prop1 and prop2 from the object obj1. In this case two primitive numbers 34 and 49
+
+// // e.g. in ES5:
+// // const prop1 = obj1.prop1;
+// // const prop2 = obj2.prop2;
+
+// -------------------------------------------------- //
+
+// // Functional Orientated Programming //
+
+
+// function closure(num) {
+//     let counter = 5;
+//     return function() {
+//         const value = counter+num;
+//         console.log(value);
+//     }
+// }
+
+// const myFunction = closure(6); // assigning the closure function to a variable called myFunction and setting 5.
+// const addFive = closure(5);
+// const addTen = closure(10);
+
+
+// // high order functions) - when a function returns another function.
+// // can add more parameters here if required:
+
+
+function closure(num) {
+    let counter = 5;
+    return function(num2) {
+        const value = counter+num+num2;
+        console.log(value);
+    }
+}
+
+const addFive = closure(5);
+const addTen = closure(10);
+
+// call the function like this addTen(5) to return 20. 10 + 5 + 5 = 20.
+
+// add () to run functions. e.g. myFunction will print out the function in the console but myFunction() will run it.
+
+
+// -------------------------------------------------- //
+
+// Object Orientated Programming
+
+// const person = {
+//     name: "Peter",
+//     age: 35,
+//     getOld: function(years) {
+//         this.age = this.age + years; // the first this.age can be omitted. Is is there for my understanding
+//     }
+// }
+
+// Above is our own object. A native version of an object is string but this is our own. We can grab values using keys i.e. person.age
+// The variables of the example above however are not private. So person.age can be reassigned on a global level.
+
+// DRY - Do Not Repeat Yourself
+
+// Function Declaration
+// a function that creates another function. i.e. if we want to create more people ...
+
+// const person = {
+//     name: "Peter",
+//     age: 35,
+//     getOld: function(years) {
+//         this.age = this.age + years; // the first this.age can be omitted. Is is there for my understanding
+//     }
+// }
+
+// we effectively make this first one a template and create the unique data when we create the variable.
+
+// function Person(name, age) {
+//     return {
+//         name: name,
+//         age: age,
+//         getOld: function(years) {
+//             this.age = this.age + years;
+//         }
+//     }
+// }
+
+// const john = Person("John", 56);
+// const paul = Person("Paul", 80);
+// const ringo = Person("Ringo", 30);
+
+
+// // Constructor Function. This is the way that native JS objects are written so best to do it this way. Should begin with an uppercase letter.
+
+// function Person(name, years) {
+// this.name = name;
+// this.age = years;
+// this.getOld = function(years) {
+// this.age = this.age + years;
+// }
+// }
+
+// const john = new Person("John", 56);
+// const paul = new Person("Paul", 80);
+// const ringo = new Person("Ringo", 30);
+
+// // add the new key word to create a new object.
+
+// __proto__ returns the template (constructor function) of the object i.e. String.__proto__ to see the template. Templates can be nested, so you'll see more __proto__ in the dataset to go through the hierarchy.
+
+// we can attach methods/properties to the prototype, more efficient. For example:
+
+function Person(name, years) {
+this.name = name;
+this.age = years;
+// this.getOld = function(years) { // can be moved to the prototype, like this ...
+// this.age = this.age + years;
+// }
+}
+
+Person.prototype.getOld = function(years) { 
+this.age = this.age + years;
+}
+
+const john = new Person("John", 56);
+const paul = new Person("Paul", 80);
+const ringo = new Person("Ringo", 30);
+
+
+// We can Extend this. For example we have customers who use the same properties as Person but we also need to include an email address
+
+function Customer(name, age, email) {
+    Person.call(this, name, age); // .call = method that inherits the function for these properites from the template
+    this.email = email; // add an email address to include this value in our js object.
+}
+
+// the client1 variable will inherit the properties. To inherit the methods (objects in prototype) you need:
+
+Customer.prototype = Object.create(Person.prototype); // this references the Person Prototype
+Customer.prototype.constructor = Customer; // this will set the prototype to the Customer Prototype. We can then add custom methods/functionality to this specific (Customer) prototype. i.e.
+
+
+Customer.prototype.greeting = function() {
+    return `Hello my name is ${this.name} and my email is ${this.email}`;
+}
+
+const person1 = new Person("Peter", 35);
+const client1 = new Customer("Matt", 40, "example@yahoo.co.uk");
+
+
+// this will return the property of whoever calls it. So in the example below, this.name when called by ringo will return beatle unless you bind it. 
+
+const beatle = {
+
+name:"beatle",
+greetings: function(){
+    console.log(this.name);
+}
+}
+
+const george = {
+    name: "george"
+}
+
+const ringo1 = {
+    name: "ringo1",
+    greetings: beatle.greetings.bind(george)
+}
+
+</script>
+</body>
+
+</html>

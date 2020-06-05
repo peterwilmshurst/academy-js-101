@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>The Beatles</title>
+
+    <style>
+        .image {
+            background-image: url(img/john.jpg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: cover;
+            width: 500px;
+            height: 500px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="image">
+    </div>
+
+    <select>
+        <option value="john">John Lennon</option>
+        <option value="paul">Paul McCartney</option>
+        <option value="george">George Harrison</option>
+        <option value="ringo">Ringo Star</option>
+    </select>
+
+</body>
+
+
+<script>
+    // var image = document.querySelector(".image");
+    // // var image = $(".image"); // jquery shorthand
+    // var select = document.querySelector("select");
+    // // var select  = $("select") // jquery shorthand
+
+    // select.addEventListener("change", changeBeatle);
+
+    // function changeBeatle () {
+
+    //     var beatle = select.value;
+    //     // 'url(img/' + beatle + ')'; // old school
+    //     // `url(img/${beatle}.jpg)`; // template string feature (ES6)
+    //       image.style.backgroundImage = `url(img/${beatle}.jpg)`;
+
+    //       // can be one line like below:
+    //       // image.style.backgroundImage = `url(img/${select.value}.jpg)`;
+    // }
+
+
+    //IIFE - Anonymous function is executed without being called. It doesn't have a name so cannot be called. Variables exist within that function so do not pollute the global variables
+
+    (function () {
+
+        var image = document.querySelector(".image");
+        var select = document.querySelector("select");
+
+        select.addEventListener("change", changeBeatle);
+
+        function changeBeatle() {
+            image.style.backgroundImage = `url(img/${select.value}.jpg)`;
+        }
+
+
+    })()
+</script>
+
+</html>
